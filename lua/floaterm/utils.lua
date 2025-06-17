@@ -12,7 +12,16 @@ M.convert_buf2term = function(cmd)
   else
     cmd = { shell }
   end
-local code = vim.fn.jobstart(cmd, { detach = false, term = true })
+  local function jobstart(cmd, opts)
+  opts = opts or {}
+  local fn = vim.fn.jobstart
+  if vim.fn.termopen then
+    opts.term = nil
+    fn = vim.fn.termopen
+  end
+  return fn(cmd, vim.tbl_isempty(opts) and vim.empty_dict() or opts)
+end
+local code = jobstart(cmd, { detach = false, term = true })
 vim.notify(code)
 end
 
