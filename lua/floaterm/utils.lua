@@ -12,8 +12,9 @@ M.convert_buf2term = function(cmd)
   else
 
     
+=======
+    cmd = { shell }
   end
-      cmd = {"pwsh"}
 local code = vim.fn.jobstart(cmd, { detach = false, term = true })
 vim.notify(code)
 end
