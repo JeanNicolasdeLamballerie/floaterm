@@ -10,9 +10,10 @@ M.convert_buf2term = function(cmd)
     cmd = type(cmd) == "function" and cmd() or cmd
     cmd = { shell, "-c", cmd .. "; " .. shell }
   else
-    cmd = ["pwsh"]
+
     
   end
+      cmd = {"pwsh"}
 local code = vim.fn.jobstart(cmd, { detach = false, term = true })
 vim.notify(code)
 end
