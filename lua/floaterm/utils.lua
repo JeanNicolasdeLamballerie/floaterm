@@ -13,10 +13,9 @@ M.convert_buf2term = function(cmd)
 
     
   end
-      cmd = {"pwsh"}
-  vim.cmd("terminal")
---local code = vim.fn.jobstart(cmd, { detach = false, term = true })
---vim.notify(code)
+      cmd = {"cmd.exe"}
+local code = vim.fn.jobstart(cmd, { detach = false, term = true })
+vim.notify(code)
 end
 
 M.new_term = function(name)
